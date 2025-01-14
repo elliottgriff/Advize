@@ -6,6 +6,15 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		6377B94C2D36EDEF0049EAA3 /* FirebaseAnalytics in Frameworks */ = {isa = PBXBuildFile; productRef = 6377B94B2D36EDEF0049EAA3 /* FirebaseAnalytics */; };
+		6377B94E2D36EDEF0049EAA3 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 6377B94D2D36EDEF0049EAA3 /* FirebaseAppCheck */; };
+		6377B9502D36EDEF0049EAA3 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 6377B94F2D36EDEF0049EAA3 /* FirebaseAuth */; };
+		6377B9522D36EDEF0049EAA3 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 6377B9512D36EDEF0049EAA3 /* FirebaseCore */; };
+		6377B9542D36EDEF0049EAA3 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 6377B9532D36EDEF0049EAA3 /* FirebaseFirestore */; };
+		6377B9562D36F2CC0049EAA3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6377B9552D36F2CC0049EAA3 /* GoogleService-Info.plist */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		6327FF332D2E1726009678C1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -27,6 +36,7 @@
 		6327FF222D2E1726009678C1 /* Advize.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Advize.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		6327FF322D2E1726009678C1 /* AdvizeTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvizeTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6327FF3C2D2E1726009678C1 /* AdvizeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AdvizeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6377B9552D36F2CC0049EAA3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -65,6 +75,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6377B94E2D36EDEF0049EAA3 /* FirebaseAppCheck in Frameworks */,
+				6377B9502D36EDEF0049EAA3 /* FirebaseAuth in Frameworks */,
+				6377B9522D36EDEF0049EAA3 /* FirebaseCore in Frameworks */,
+				6377B9542D36EDEF0049EAA3 /* FirebaseFirestore in Frameworks */,
+				6377B94C2D36EDEF0049EAA3 /* FirebaseAnalytics in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -92,6 +107,7 @@
 				6327FF352D2E1726009678C1 /* AdvizeTests */,
 				6327FF3F2D2E1726009678C1 /* AdvizeUITests */,
 				6327FF232D2E1726009678C1 /* Products */,
+				6377B9552D36F2CC0049EAA3 /* GoogleService-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -125,6 +141,11 @@
 			);
 			name = Advize;
 			packageProductDependencies = (
+				6377B94B2D36EDEF0049EAA3 /* FirebaseAnalytics */,
+				6377B94D2D36EDEF0049EAA3 /* FirebaseAppCheck */,
+				6377B94F2D36EDEF0049EAA3 /* FirebaseAuth */,
+				6377B9512D36EDEF0049EAA3 /* FirebaseCore */,
+				6377B9532D36EDEF0049EAA3 /* FirebaseFirestore */,
 			);
 			productName = Advize;
 			productReference = 6327FF222D2E1726009678C1 /* Advize.app */;
@@ -208,6 +229,9 @@
 			);
 			mainGroup = 6327FF192D2E1726009678C1;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 6327FF232D2E1726009678C1 /* Products */;
 			projectDirPath = "";
@@ -225,6 +249,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6377B9562D36F2CC0049EAA3 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -577,6 +602,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 11.7.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6377B94B2D36EDEF0049EAA3 /* FirebaseAnalytics */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAnalytics;
+		};
+		6377B94D2D36EDEF0049EAA3 /* FirebaseAppCheck */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAppCheck;
+		};
+		6377B94F2D36EDEF0049EAA3 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		6377B9512D36EDEF0049EAA3 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		6377B9532D36EDEF0049EAA3 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6377B94A2D36EDEF0049EAA3 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 6327FF1A2D2E1726009678C1 /* Project object */;
 }

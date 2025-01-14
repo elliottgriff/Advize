@@ -5,19 +5,28 @@
 //  Created by Elliott Griffin on 1/7/25.
 //
 
+import SwiftUI
 
 struct HomeView: View {
-    @State private var conversations: [String] = ["Conversation 1"]
+    @StateObject private var viewModel = ConversationsViewModel()
     @State private var isAddingConversation = false
+    @State private var isManagingFigures = false
+    @State private var figures: [String] = UserDefaults.standard.stringArray(forKey: "figures") ?? ["Marcus Aurelius", "Picasso", "Ben Franklin"]
     
     var body: some View {
         NavigationView {
             List {
-                ForEach(conversations, id: \.self) { conversation in
+                ForEach(viewModel.conversations, id: \.title) { conversation in
                     NavigationLink(destination: ConversationView(conversation: conversation)) {
-                        Text(conversation)
+                        VStack(alignment: .leading) {
+                            Text(conversation.title)
+                            Text(conversation.figure)
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
                     }
                 }
+                .onDelete(perform: viewModel.deleteConversation)
             }
             .navigationTitle("Conversations")
             .toolbar {
@@ -27,16 +36,20 @@ struct HomeView: View {
                     }
                 }
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    NavigationLink(destination: ManageFiguresView()) {
+                    Button(action: { isManagingFigures = true }) {
                         Text("Manage Figures")
                     }
                 }
             }
         }
         .sheet(isPresented: $isAddingConversation) {
-            AddConversationView { newConversation in
-                conversations.append(newConversation)
+            AddConversationView(figures: figures) { title, figure in
+                viewModel.addConversation(title: title, figure: figure)
+                isAddingConversation = false
             }
+        }
+        .sheet(isPresented: $isManagingFigures) {
+            ManageFiguresView(figures: $figures)
         }
     }
 }

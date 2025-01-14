@@ -1,57 +1,53 @@
 import SwiftUI
 
 struct ConversationView: View {
+    let conversation: (title: String, figure: String)
     @State private var userInput = ""
     @State private var chatResponses: [String] = []
-    @State private var selectedFigure = "Marcus Aurelius"
     @State private var isLoading = false
     
-    private let figures = ["Marcus Aurelius", "Picasso", "Ben Franklin"]
     private let openAIService = OpenAIService()
     
     var body: some View {
         VStack {
-            List(chatResponses, id: \.self) {
-                Text($0)
+            List(chatResponses, id: \.self) { response in
+                Text(response)
+                    .padding(.vertical, 4)
             }
             
             HStack {
-                Picker("Figure", selection: $selectedFigure) {
-                    ForEach(figures, id: \.self) { figure in
-                        Text(figure)
-                    }
-                }
-                .pickerStyle(MenuPickerStyle())
-                
                 TextField("Type your message", text: $userInput)
                     .textFieldStyle(RoundedBorderTextFieldStyle())
+                    .padding(.horizontal)
                 
                 Button(action: submitMessage) {
                     if isLoading {
                         ProgressView()
                     } else {
                         Text("Submit")
+                            .padding(.horizontal)
                     }
                 }
                 .disabled(userInput.isEmpty || isLoading)
             }
             .padding()
         }
-        .navigationTitle("Conversation")
+        .navigationTitle(conversation.title)
     }
     
     func submitMessage() {
         guard !userInput.isEmpty else { return }
         isLoading = true
         
-        let prompt = "\(selectedFigure) responds: \(userInput)"
-        
         Task {
             do {
-                let response = try await openAIService.generateResponse(prompt: prompt)
+                let response = try await openAIService.generateResponse(
+                    prompt: userInput,
+                    figure: conversation.figure
+                )
                 DispatchQueue.main.async {
                     chatResponses.append("You: \(userInput)")
-                    chatResponses.append("\(selectedFigure): \(response)")
+                    chatResponses.append("\(conversation.figure): \(response)")
                     userInput = ""
                     isLoading = false
                 }
@@ -64,3 +60,4 @@ struct ConversationView: View {
         }
     }
 }
+

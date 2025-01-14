@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCL7z0Tg7cx3RgUCCM43gdx49E5DjnzGto</string>
+	<key>GCM_SENDER_ID</key>
+	<string>981951523739</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.elliottcgriffin.Advize</string>
+	<key>PROJECT_ID</key>
+	<string>advize-bdf77</string>
+	<key>STORAGE_BUCKET</key>
+	<string>advize-bdf77.firebasestorage.app</string>
+	<key>IS_ADS_ENABLED</key>
+	<false/>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false/>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true/>
+	<key>IS_GCM_ENABLED</key>
+	<true/>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true/>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:981951523739:ios:ea0dd3e7abf4909cd30f3e</string>
+</dict>
+</plist>

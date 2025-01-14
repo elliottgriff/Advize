@@ -5,35 +5,55 @@
 //  Created by Elliott Griffin on 1/7/25.
 //
 
+import SwiftUI
 
 struct ManageFiguresView: View {
-    @State private var figures = ["Marcus Aurelius", "Picasso", "Ben Franklin"]
+    @Binding var figures: [String]
+    @Environment(\.dismiss) private var dismiss
     @State private var newFigure = ""
     
     var body: some View {
-        VStack {
-            List {
-                ForEach(figures, id: \.self) { figure in
-                    Text(figure)
+        NavigationView {
+            VStack {
+                List {
+                    ForEach(figures, id: \.self) { figure in
+                        Text(figure)
+                    }
+                    .onDelete(perform: deleteFigure)
                 }
-                .onDelete { indices in
-                    figures.remove(atOffsets: indices)
-                }
-            }
-            
-            HStack {
-                TextField("Add new figure", text: $newFigure)
-                    .textFieldStyle(RoundedBorderTextFieldStyle())
                 
-                Button("Add") {
-                    if !newFigure.isEmpty {
-                        figures.append(newFigure)
-                        newFigure = ""
+                HStack {
+                    TextField("Add new figure", text: $newFigure)
+                        .textFieldStyle(RoundedBorderTextFieldStyle())
+                    
+                    Button("Add") {
+                        addFigure()
+                    }
+                    .disabled(newFigure.isEmpty)
+                }
+                .padding()
+            }
+            .navigationTitle("Manage Figures")
+            .toolbar {
+                ToolbarItem(placement: .navigationBarLeading) {
+                    Button("Close") {
+                        dismiss()
                     }
                 }
             }
-            .padding()
         }
-        .navigationTitle("Manage Figures")
+    }
+    
+    private func addFigure() {
+        if !figures.contains(newFigure) {
+            figures.append(newFigure)
+            UserDefaults.standard.set(figures, forKey: "figures")
+            newFigure = ""
+        }
+    }
+    
+    private func deleteFigure(at offsets: IndexSet) {
+        figures.remove(atOffsets: offsets)
+        UserDefaults.standard.set(figures, forKey: "figures")
     }
 }
