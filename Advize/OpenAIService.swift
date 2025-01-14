@@ -10,7 +10,10 @@ import Foundation
 
 class OpenAIService {
 
-    private let apiKey = Bundle.main.object(forInfoDictionaryKey: "OPENAI_API_KEY") as? String
+//    private let apiKey = Bundle.main.object(forInfoDictionaryKey: "OPENAI_API_KEY") as? String
+    guard let apiKey = ProcessInfo.processInfo.environment["OPENAPI_KEY"] else {
+        fatalError("OPENAI_API_KEY environment variable not set")
+    }
 
     func generateResponse(prompt: String, model: String = "text-davinci-003", maxTokens: Int = 150) async throws -> String {
         let endpoint = "https://api.openai.com/v1/completions"
